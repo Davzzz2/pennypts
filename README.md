@@ -1,2 +1,0 @@
-# pennypts
-fuck this readme
