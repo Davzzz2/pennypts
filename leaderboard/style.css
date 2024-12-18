@@ -112,7 +112,7 @@ table {
   border-collapse: separate; /* Keeps borders separate for the cells */
   margin-top: 50px;
   background-color: #222; /* Dark background for the table */
-  margin-left: 635px;
+  margin-left: 572px;
   border-radius: 15px; /* Rounded corners for the outer edges of the table */
   overflow: hidden; /* Ensures rounded corners for the content inside the table */
   border: 2px solid #fff; /* Thinner white border around the table */
