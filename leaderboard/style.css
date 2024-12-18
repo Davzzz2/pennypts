@@ -1,7 +1,7 @@
 /* General styling */
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #2e8b57, #4682b4); /* Green to Blue gradient */
+  font-family: "Sigmar One", system-ui; /* Using the Sigmar One font */
+  background: linear-gradient(135deg, #00bcd4, #003366); /* Turquoise to Dark Blue gradient */
   color: #f5f5dc; /* Change text color to Cream */
   margin: 0;
   padding: 0;
@@ -17,12 +17,26 @@ body {
   text-align: center;
 }
 
-/* Main title style */
+/* Main title style - Centering at the very top */
 .main-title {
   font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-top: 0; /* Removed margin to get it closer to the top */
+  text-align: center; /* Center the text horizontally */
+  position: absolute; /* Absolute positioning for exact placement */
+  top: 5px; /* Set it closer to the very top edge */
+  left: 50%; /* Position it at the horizontal center */
+  transform: translateX(-50%); /* Offset it by 50% of its width to truly center */
   text-shadow: 0 0 4px white; /* Dimmed glow */
+}
+
+/* Image of Stake logo placed to the left of the Weekly Leaderboard title */
+#stake-image {
+  width: 100px; /* Set a fixed width */
+  height: auto; /* Let the height scale proportionally */
+  display: block; /* Remove extra space below the image */
+  margin-left: 550px; /* Adjust this margin to move the image to the left */
+  margin-top: 10px; /* Adjust this margin to move the image down or up */
 }
 
 /* Week display style (top right corner) */
@@ -37,7 +51,7 @@ body {
 
 /* Rank boxes for Rank 1, 2, 3 with a darker gradient */
 .rank-box#rank-1, .rank-box#rank-2, .rank-box#rank-3 {
-  background: linear-gradient(135deg, #1a4e2d, #204c5b); /* Even darker Green/Blue gradient */
+  background: linear-gradient(135deg, #006a6c, #002f44); /* Darker Turquoise/Blue gradient */
   color: #f5f5dc; /* Change text color inside rank boxes to Cream */
   padding: 18px;
   border-radius: 10px;
@@ -70,12 +84,12 @@ body {
 /* Add specific margin to Rank 2 and Rank 3 to reduce the space between them */
 .rank-box#rank-2 {
   margin-top: 0; /* Reduce margin-top to bring Rank 2 closer to Rank 1 */
-  left: 20%;
+  left: 30%;
 }
 
 .rank-box#rank-3 {
   margin-top: -10px; /* Bring Rank 3 slightly closer to Rank 2 */
-  left: -20%;
+  right: 30%;
 }
 
 /* Rank title */
@@ -94,31 +108,44 @@ body {
 
 /* Table styling with a darker gradient applied to the rows */
 table {
-  width: 100%;
-  border-collapse: collapse;
+  width: 40%;
+  border-collapse: separate; /* Keeps borders separate for the cells */
   margin-top: 50px;
   background-color: #222; /* Dark background for the table */
+  margin-left: 635px;
+  border-radius: 15px; /* Rounded corners for the outer edges of the table */
+  overflow: hidden; /* Ensures rounded corners for the content inside the table */
+  border: 2px solid #fff; /* Thinner white border around the table */
+  border-spacing: 0; /* Removes any space between the table cells */
 }
 
 th, td {
   padding: 15px;
-  border: 1px solid #fff;
+  border: 1px solid #fff; /* Same white border for table cells */
   text-align: center;
   font-size: 1.2rem;
   text-shadow: 0 0 4px white; /* Dimmed glow */
 }
 
 th {
-  background: linear-gradient(135deg, #1a4e2d, #204c5b); /* Darker gradient for table header */
+  background: linear-gradient(135deg, #006a6c, #002f44); /* Darker Turquoise/Blue gradient for table header */
 }
 
 td {
-  background: linear-gradient(135deg, #1a4e2d, #204c5b); /* Darker gradient for table rows */
+  background: linear-gradient(135deg, #006a6c, #002f44); /* Darker Turquoise/Blue gradient for table rows */
 }
 
 tbody tr:nth-child(odd) {
   background-color: #333;
 }
+
+/* Hover effects for rows */
+tbody tr:hover {
+  background-color: #444;
+  cursor: pointer;
+}
+
+
 
 /* Glow effect */
 * {
@@ -175,4 +202,3 @@ tbody tr:hover {
 #youtube-btn {
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png'); /* YouTube logo */
 }
-
