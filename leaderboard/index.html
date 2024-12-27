@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stake Leaderboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="cyber-navbar">
+        <div class="nav-container">
+            <img src="images/stake.webp" alt="Stake" class="nav-logo">
+            <div class="nav-links">
+                <a href="/" class="nav-link">HOME</a>
+                <a href="#" class="nav-link">LEADERBOARD</a>
+                <a href="#" class="nav-link">REWARDS</a>
+                <a href="#" class="nav-link">MEDIA</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="cyber-container">
+        <div class="header-section">
+            <h1 class="cyber-title">Weekly Leaderboard</h1>
+        </div>
+
+        <div class="countdown" id="countdown"></div>
+
+        <div class="top-ranks">
+            <div class="rank-card rank-2 fade-in" data-rank="2">
+                <div class="rank-number">2</div>
+                <img src="images/stake-icon.png" alt="Stake Icon" class="stake-icon">
+                <div class="rank-content">
+                    <div class="username" id="user-2">Loading...</div>
+                    <div class="wager" id="wagered-2">$0</div>
+                    <div class="reward" id="reward-2">$0</div>
+                </div>
+            </div>
+
+            <div class="rank-card rank-1 fade-in" data-rank="1">
+                <div class="crown">👑</div>
+                <img src="images/stake-icon.png" alt="Stake Icon" class="stake-icon">
+                <div class="rank-content">
+                    <div class="username" id="user-1">Loading...</div>
+                    <div class="wager" id="wagered-1">$0</div>
+                    <div class="reward" id="reward-1">$0</div>
+                </div>
+            </div>
+
+            <div class="rank-card rank-3 fade-in" data-rank="3">
+                <div class="rank-number">3</div>
+                <img src="images/stake-icon.png" alt="Stake Icon" class="stake-icon">
+                <div class="rank-content">
+                    <div class="username" id="user-3">Loading...</div>
+                    <div class="wager" id="wagered-3">$0</div>
+                    <div class="reward" id="reward-3">$0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cyber-table-container fade-in">
+            <table class="cyber-table">
+                <thead>
+                    <tr>
+                        <th>RANK</th>
+                        <th>USER</th>
+                        <th>WAGERED</th>
+                        <th>REWARD</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body"></tbody>
+            </table>
+        </div>
+
+        <div class="cyber-social fade-in">
+            <a href="https://x.com/imEnjayy" target="_blank" class="social-link" id="twitter-btn"></a>
+            <a href="https://kick.com/enjayy" target="_blank" class="social-link" id="kick-btn"></a>
+            <a href="http://stake.com/?c=penny" target="_blank" class="social-link" id="stake-btn"></a>
+            <a href="https://www.youtube.com/channel/UCzioTLxeMrkSkRAOxyXoTcw" target="_blank" class="social-link" id="youtube-btn"></a>
+        </div>
+    </div>
+
+    <script src="leaderboard.js"></script>
+</body>
+</html>
