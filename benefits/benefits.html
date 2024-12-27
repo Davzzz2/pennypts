@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rank Up and Mini Benefits</title>
+    <style>
+        /* Define the color scheme */
+        :root {
+            --cyber-blue: #000428;
+            --neon-blue: #00f7ff;
+            --dark-blue: #004e92;
+            --light-blue: #2196f3;
+            --stake-white: #ffffff;
+            --glow-blue: rgba(0, 247, 255, 0.5);
+        }
+
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--cyber-blue), var(--dark-blue)); /* Gradient */
+            color: var(--stake-white); /* Text color */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Align content to the top */
+            text-align: center;
+            animation: fadeIn 1.5s ease-out; /* Fade-in animation for the body */
+        }
+
+        /* Navbar Styling */
+        .cyber-navbar {
+            background: rgba(0, 4, 40, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem; /* Reduced padding for a smaller navbar */
+            position: fixed;
+            top: 1rem;
+            left: 15%;
+            right: 15%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.2);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 2s ease-out; /* Fade-in animation for navbar */
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Use pennypts.png as logo */
+        .nav-logo {
+            height: 55px; /* Keep the size from before */
+            filter: drop-shadow(0 0 10px var(--glow-blue));
+            animation: fadeIn 2s ease-out; /* Fade-in animation for logo */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--stake-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem; /* Reduced font size */
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px var(--glow-blue);
+        }
+
+        .nav-link:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--glow-blue);
+        }
+
+        /* Header Styling */
+        h1 {
+            margin-top: 120px; /* Adjust for navbar */
+            font-size: 2.5em;
+            animation: fadeIn 3s ease-out; /* Fade-in animation for heading */
+        }
+
+        /* Container */
+        .container {
+            position: relative; /* Ensures absolute positioning of the boxes inside */
+            display: flex;
+            justify-content: flex-start; /* Aligns items to the left */
+            gap: 40px;
+            margin-top: 40px;
+            width: 80%; /* Make container width smaller */
+            max-width: 1200px; /* Limit the container width */
+            animation: fadeIn 4s ease-out; /* Fade-in animation for the container */
+        }
+
+        /* Rank Up Benefits Box */
+        .rank-up-box {
+            background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+            border-radius: 15px; /* Rounded corners */
+            padding: 30px;
+            width: 500px; /* Increased width for more horizontal space */
+            text-align: left;
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            gap: 15px;
+            max-height: 80vh; /* Limit the height to avoid overflowing */
+            overflow-y: auto; /* Enable scroll if content overflows */
+            position: absolute; /* Allows independent positioning */
+            left: 0; /* Align the box to the left */
+            box-shadow: 0 0 20px var(--glow-blue); /* Blue glow around the box */
+            animation: fadeIn 4s ease-out; /* Fade-in animation for the box */
+        }
+
+        .rank-up-box h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .rank-up-box .benefits {
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+        .rank-up-box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .rank-up-box li {
+            margin: 15px 0; /* Increased margin to give more space between items */
+        }
+
+        /* Mini Benefits Box */
+        .mini-benefits-box {
+            background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+            border-radius: 15px; /* Rounded corners */
+            padding: 30px;
+            width: 500px; /* Increased width for more horizontal space */
+            text-align: left;
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            gap: 15px;
+            max-height: 80vh; /* Limit the height to avoid overflowing */
+            overflow-y: auto; /* Enable scroll if content overflows */
+            position: absolute; /* Allows independent positioning */
+            right: 0; /* Align the box to the right */
+            box-shadow: 0 0 20px var(--glow-blue); /* Blue glow around the box */
+            animation: fadeIn 4s ease-out; /* Fade-in animation for the box */
+        }
+
+        .mini-benefits-box h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .mini-benefits-box .benefits {
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+        .mini-benefits-box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .mini-benefits-box li {
+            margin: 15px 0; /* Increased margin to give more space between items */
+        }
+
+        button {
+            background-color: var(--light-blue);
+            color: var(--stake-white);
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+            animation: fadeIn 5s ease-out; /* Fade-in animation for the button */
+        }
+
+        button:hover {
+            background-color: var(--neon-blue);
+        }
+
+        /* Social Media Icons Styling */
+        .social-links {
+            display: flex;
+            flex-direction: column; /* Stack the buttons vertically */
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%); /* Center vertically */
+            gap: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+        }
+
+        #kick-link {
+            background-image: url('https://i.pinimg.com/736x/f6/4f/56/f64f5611aabc03a17fa0a1ddfc7d0490.jpg');
+        }
+
+        #yt-link {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png');
+        }
+
+        #twitter-link {
+            background-image: url('https://img.freepik.com/vektoren-kostenlos/neues-twitter-logo-x-icon-design-2023_1017-45418.jpg?t=st=1734191515~exp=1734195115~hmac=5bfeabf55a31a7cf0771ea83cf61905033b74c0d7a8bbb127ed07a70b35e74bc&w=826');
+        }
+
+        #stake-link {
+            background-image: url('https://cdn.dribbble.com/userupload/15215544/file/still-2778c286e035a4d088fe2e7af4a18fef.png?resize=1400x1050'); /* Stake logo */
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar Section -->
+<nav class="cyber-navbar">
+    <div class="nav-container">
+        <img src="pennypts.png" alt="Stake" class="nav-logo">
+        <div class="nav-links">
+            <!-- Adjusted links based on folder structure -->
+            <a href="../home.html" class="nav-link">HOME</a> <!-- Home link -->
+            <a href="../leaderboard/index.html" class="nav-link">LEADERBOARD</a> <!-- Leaderboard link -->
+        </div>
+    </div>
+</nav>
+
+
+
+
+    <h1>Rank Up and Mini Rank Up Benefits</h1>
+
+    <div class="container">
+        <!-- Rank Up Benefits Box -->
+        <div class="rank-up-box">
+            <h2>Rank Up Benefits</h2>
+            <ul class="benefits">
+                <li>Bronze: $15 From Support + $15 From me</li>
+                <li>Silver: $50 From Support + $25 From me</li>
+                <li>Gold: $100 From Support + $35 From me</li>
+                <li>Plat 1: $200 From Support + $50 From me</li>
+                <li>Plat 2: $400 From Support + $100 From me</li>
+                <li>Plat 3: $800 From Support + $175 From me</li>
+                <li>Plat 4: $1600 From Support + $325 From me</li>
+                <li>Plat 5: $3200 From Support + $700 From me</li>
+                <li>Plat 6: $6400 From Support + $1250 From me</li>
+                <li>Diamond 1: $12,800 From Support + $3000 From me</li>
+                <li>Diamond 2: $25,600 From Support + $7500 From me</li>
+            </ul>
+        </div>
+
+        <!-- Mini Rank Up Benefits Box -->
+        <div class="mini-benefits-box">
+            <h2>Mini Rank Up Benefits</h2>
+            <ul class="benefits">
+                <li>$5000 Wager Reached: $2.5</li>
+                <li>$20,000 Wager Reached: $7</li>
+                <li>$40,000 Wager Reached: $13</li>
+                <li>$75,000 Wager Reached: $25</li>
+                <li>$150,000 Wager Reached: $39</li>
+                <li>$200,000 Wager Reached: $60</li>
+                <li>$600,000 Wager Reached: $130</li>
+                <li>$900,000 Wager Reached: $255</li>
+                <li>$1,500,000 Wager Reached: $390</li>
+                <li>$2,000,000 Wager Reached: $600</li>
+                <li>$6,000,000 Wager Reached: $1300</li>
+                <li>$9,000,000 Wager Reached: $2550</li>
+                <li>$15,000,000 Wager Reached: $3975</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="social-links">
+        <a id="kick-link" class="social-link" href="https://kick.com/enjayy/" target="_blank"></a>
+        <a id="yt-link" class="social-link" href="https://youtube.com/channel/UCzioTLxeMrkSkRAOxyXoTcw" target="_blank"></a>
+        <a id="twitter-link" class="social-link" href="https://twitter.com/imEnjayy" target="_blank"></a>
+        <a id="stake-link" class="social-link" href="http://stake.com/?c=penny" target="_blank"></a>
+    </div>
+
+</body>
+</html>
