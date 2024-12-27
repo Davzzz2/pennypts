@@ -57,11 +57,13 @@
             width: 100%;
         }
 
-        /* Use pennypts.png as logo */
+        /* Use stake.webp as logo */
         .nav-logo {
             height: 55px; /* Keep the size from before */
             filter: drop-shadow(0 0 10px var(--glow-blue));
             animation: fadeIn 2s ease-out; /* Fade-in animation for logo */
+            position: relative;
+            left: -20px; /* Move the logo to the left */
         }
 
         .nav-links {
@@ -92,148 +94,59 @@
             animation: fadeIn 3s ease-out; /* Fade-in animation for heading */
         }
 
-        /* Container */
-        .container {
-            position: relative; /* Ensures absolute positioning of the boxes inside */
-            display: flex;
-            justify-content: flex-start; /* Aligns items to the left */
-            gap: 40px;
-            margin-top: 40px;
-            width: 80%; /* Make container width smaller */
-            max-width: 1200px; /* Limit the container width */
-            animation: fadeIn 4s ease-out; /* Fade-in animation for the container */
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 15px;
+            overflow: hidden; /* Hide overflow to keep rounded corners */
+            animation: fadeIn 4s ease-out; /* Fade-in animation for table */
         }
 
-        /* Rank Up Benefits Box */
-        .rank-up-box {
-            background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
-            border-radius: 15px; /* Rounded corners */
-            padding: 30px;
-            width: 500px; /* Increased width for more horizontal space */
-            text-align: left;
-            display: flex;
-            flex-direction: column; /* Stack items vertically */
-            gap: 15px;
-            max-height: 80vh; /* Limit the height to avoid overflowing */
-            overflow-y: auto; /* Enable scroll if content overflows */
-            position: absolute; /* Allows independent positioning */
-            left: 0; /* Align the box to the left */
-            box-shadow: 0 0 20px var(--glow-blue); /* Blue glow around the box */
-            animation: fadeIn 4s ease-out; /* Fade-in animation for the box */
+        table, th, td {
+            border: 1px solid var(--neon-blue);
         }
 
-        .rank-up-box h2 {
-            font-size: 1.8em;
-            margin-bottom: 15px;
-        }
-
-        .rank-up-box .benefits {
-            font-size: 1.1em;
-            margin-top: 10px;
-        }
-
-        .rank-up-box ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .rank-up-box li {
-            margin: 15px 0; /* Increased margin to give more space between items */
-        }
-
-        /* Mini Benefits Box */
-        .mini-benefits-box {
-            background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
-            border-radius: 15px; /* Rounded corners */
-            padding: 30px;
-            width: 500px; /* Increased width for more horizontal space */
-            text-align: left;
-            display: flex;
-            flex-direction: column; /* Stack items vertically */
-            gap: 15px;
-            max-height: 80vh; /* Limit the height to avoid overflowing */
-            overflow-y: auto; /* Enable scroll if content overflows */
-            position: absolute; /* Allows independent positioning */
-            right: 0; /* Align the box to the right */
-            box-shadow: 0 0 20px var(--glow-blue); /* Blue glow around the box */
-            animation: fadeIn 4s ease-out; /* Fade-in animation for the box */
-        }
-
-        .mini-benefits-box h2 {
-            font-size: 1.8em;
-            margin-bottom: 15px;
-        }
-
-        .mini-benefits-box .benefits {
-            font-size: 1.1em;
-            margin-top: 10px;
-        }
-
-        .mini-benefits-box ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .mini-benefits-box li {
-            margin: 15px 0; /* Increased margin to give more space between items */
-        }
-
-        button {
-            background-color: var(--light-blue);
+        th, td {
+            padding: 12px 20px;
+            text-align: center;
             color: var(--stake-white);
-            border: none;
-            padding: 10px 20px;
-            font-size: 1em;
-            cursor: pointer;
-            margin-top: 20px;
-            border-radius: 5px;
-            animation: fadeIn 5s ease-out; /* Fade-in animation for the button */
+            font-size: 1.1em;
         }
 
-        button:hover {
+        th {
+            background-color: var(--dark-blue);
+        }
+
+        td {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Add a scrollable container for the table */
+        .table-container {
+            width: 80%;
+            max-width: 1000px;
+            margin-top: 40px;
+            overflow-y: auto; /* Enable vertical scroll */
+            max-height: 700px; /* Increase height to display more rows */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.2);
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Smooth scrollbars */
+        .table-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .table-container::-webkit-scrollbar-thumb {
             background-color: var(--neon-blue);
+            border-radius: 5px;
         }
 
-        /* Social Media Icons Styling */
-        .social-links {
-            display: flex;
-            flex-direction: column; /* Stack the buttons vertically */
-            position: fixed;
-            top: 50%;
-            right: 30px;
-            transform: translateY(-50%); /* Center vertically */
-            gap: 20px;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 50%;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .social-link:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 1);
-        }
-
-        #kick-link {
-            background-image: url('https://i.pinimg.com/736x/f6/4f/56/f64f5611aabc03a17fa0a1ddfc7d0490.jpg');
-        }
-
-        #yt-link {
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png');
-        }
-
-        #twitter-link {
-            background-image: url('https://img.freepik.com/vektoren-kostenlos/neues-twitter-logo-x-icon-design-2023_1017-45418.jpg?t=st=1734191515~exp=1734195115~hmac=5bfeabf55a31a7cf0771ea83cf61905033b74c0d7a8bbb127ed07a70b35e74bc&w=826');
-        }
-
-        #stake-link {
-            background-image: url('https://cdn.dribbble.com/userupload/15215544/file/still-2778c286e035a4d088fe2e7af4a18fef.png?resize=1400x1050'); /* Stake logo */
+        .table-container::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0.2);
         }
 
         /* Fade-in animation */
@@ -246,67 +159,68 @@
             }
         }
 
+.social-links {
+    position: fixed; /* Fix position to the right side */
+    right: 10px; /* Position from the right side */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for exact vertical centering */
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 1rem; /* Space between icons */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure they are above other content */
+}
+
+.social-link {
+    width: 60px; /* Increased size */
+    height: 60px; /* Increased size */
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block; /* Ensure it's a block element */
+    border: 2px solid var(--neon-blue); /* Optional border */
+}
+
+.social-link:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 1);
+}
+
+#kick-link {
+    background-image: url('https://i.pinimg.com/736x/f6/4f/56/f64f5611aabc03a17fa0a1ddfc7d0490.jpg');
+}
+
+#yt-link {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png');
+}
+
+#twitter-link {
+    background-image: url('https://img.freepik.com/vektoren-kostenlos/neues-twitter-logo-x-icon-design-2023_1017-45418.jpg?t=st=1734191515~exp=1734195115~hmac=5bfeabf55a31a7cf0771ea83cf61905033b74c0d7a8bbb127ed07a70b35e74bc&w=826');
+}
+
+#stake-link {
+    background-image: url('https://cdn.dribbble.com/userupload/15215544/file/still-2778c286e035a4d088fe2e7af4a18fef.png?resize=1400x1050');
+}
+
+
     </style>
 </head>
 <body>
 
     <!-- Navbar Section -->
-<nav class="cyber-navbar">
-    <div class="nav-container">
-        <img src="pennypts.png" alt="Stake" class="nav-logo">
-        <div class="nav-links">
-            <!-- Adjusted links based on folder structure -->
-            <a href="../home.html" class="nav-link">HOME</a> <!-- Home link -->
-            <a href="../leaderboard/index.html" class="nav-link">LEADERBOARD</a> <!-- Leaderboard link -->
-            <a href="https://gambleassist.pro" class="nav-link">GambleAssist</a>
+    <nav class="cyber-navbar">
+        <div class="nav-container">
+            <img src="stake.webp" alt="Stake" class="nav-logo">
+            <div class="nav-links">
+                <a href="../home.html" class="nav-link">HOME</a>
+                <a href="../leaderboard/index.html" class="nav-link">LEADERBOARD</a>
+                <a href="https://gambleassist.pro" class="nav-link" target="_blank">GambleAssist</a>
+            </div>
         </div>
-    </div>
-</nav>
-
-
-
-
-    <h1>Rank Up and Mini Rank Up Benefits</h1>
-
-    <div class="container">
-        <!-- Rank Up Benefits Box -->
-        <div class="rank-up-box">
-            <h2>Rank Up Benefits</h2>
-            <ul class="benefits">
-                <li>Bronze: $15 From Support + $15 From me</li>
-                <li>Silver: $50 From Support + $25 From me</li>
-                <li>Gold: $100 From Support + $35 From me</li>
-                <li>Plat 1: $200 From Support + $50 From me</li>
-                <li>Plat 2: $400 From Support + $100 From me</li>
-                <li>Plat 3: $800 From Support + $175 From me</li>
-                <li>Plat 4: $1600 From Support + $325 From me</li>
-                <li>Plat 5: $3200 From Support + $700 From me</li>
-                <li>Plat 6: $6400 From Support + $1250 From me</li>
-                <li>Diamond 1: $12,800 From Support + $3000 From me</li>
-                <li>Diamond 2: $25,600 From Support + $7500 From me</li>
-            </ul>
-        </div>
-
-        <!-- Mini Rank Up Benefits Box -->
-        <div class="mini-benefits-box">
-            <h2>Mini Rank Up Benefits</h2>
-            <ul class="benefits">
-                <li>$5000 Wager Reached: $2.5</li>
-                <li>$20,000 Wager Reached: $7</li>
-                <li>$40,000 Wager Reached: $13</li>
-                <li>$75,000 Wager Reached: $25</li>
-                <li>$150,000 Wager Reached: $39</li>
-                <li>$200,000 Wager Reached: $60</li>
-                <li>$600,000 Wager Reached: $130</li>
-                <li>$900,000 Wager Reached: $255</li>
-                <li>$1,500,000 Wager Reached: $390</li>
-                <li>$2,000,000 Wager Reached: $600</li>
-                <li>$6,000,000 Wager Reached: $1300</li>
-                <li>$9,000,000 Wager Reached: $2550</li>
-                <li>$15,000,000 Wager Reached: $3975</li>
-            </ul>
-        </div>
-    </div>
+    </nav>
 
     <!-- Social Media Links -->
     <div class="social-links">
@@ -314,6 +228,186 @@
         <a id="yt-link" class="social-link" href="https://youtube.com/channel/UCzioTLxeMrkSkRAOxyXoTcw" target="_blank"></a>
         <a id="twitter-link" class="social-link" href="https://twitter.com/imEnjayy" target="_blank"></a>
         <a id="stake-link" class="social-link" href="http://stake.com/?c=penny" target="_blank"></a>
+    </div>
+
+    <h1>Rank Up and Mini Benefits</h1>
+
+    <!-- Scrollable Table -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>RANK</th>
+                    <th>WAGER</th>
+                    <th>Reward from Support</th>
+                    <th>Reward from Enjayy</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mini Benefit</td>
+                    <td>$5,000</td>
+                    <td></td>
+                    <td>$2.5</td>
+                    <td>$2.5</td>
+                </tr>
+                <tr>
+                    <td>Bronze</td>
+                    <td>$10,000</td>
+                    <td>$15</td>
+                    <td>$15</td>
+                    <td>$32.5</td>
+                </tr>
+                <tr>
+                    <td>Mini Benefit</td>
+                    <td>$20,000</td>
+                    <td></td>
+                    <td>$7</td>
+                    <td>$9.5</td>
+                </tr>
+                <tr>
+                    <td>Mini Benefit</td>
+                    <td>$40,000</td>
+                    <td></td>
+                    <td>$13</td>
+                    <td>$22.5</td>
+                </tr>
+                <tr>
+                    <td>Silver</td>
+                    <td>$50,000</td>
+                    <td>$50</td>
+                    <td>$25</td>
+                    <td>$127.5</td>
+                </tr>
+                <tr>
+                    <td>Mini Benefit</td>
+                    <td>$75,000</td>
+                    <td></td>
+                    <td>$25</td>
+                    <td>$47.5</td>
+                </tr>
+                <tr>
+                    <td>Gold</td>
+                    <td>$100,000</td>
+                    <td>$100</td>
+                    <td>$35</td>
+                    <td>$287.5</td>
+                </tr>
+                <tr>
+                    <td>Mini Benefit</td>
+                    <td>$150,000</td>
+                    <td></td>
+                    <td>$39</td>
+                    <td>$86.5</td>
+                </tr>
+                <tr>
+                    <td>Mini Benefit</td>
+                    <td>$200,000</td>
+                    <td></td>
+                    <td>$60</td>
+                    <td>$146.5</td>
+                </tr>
+                <tr>
+                    <td>Plat 1</td>
+                    <td>$250,000</td>
+                    <td>$200</td>
+                    <td>$50</td>
+                    <td>$636.5</td>
+                </tr>
+                <tr>
+                    <td>Mini Benefit</td>
+                    <td>$600,000</td>
+                    <td></td>
+                    <td>$130</td>
+                    <td>$276.5</td>
+                </tr>
+                <tr>
+                    <td>Mini Benefit</td>
+                    <td>$900,000</td>
+                    <td></td>
+                    <td>$255</td>
+                    <td>$531.5</td>
+                </tr>
+                <tr>
+                    <td>Plat 2</td>
+                    <td>$500,000</td>
+                    <td>$400</td>
+                    <td>$100</td>
+                    <td>$1,136.5</td>
+                </tr>
+                <tr>
+                    <td>Mini Benefit</td>
+                    <td>$1,500,000</td>
+                    <td></td>
+                    <td>$390</td>
+                    <td>$921.5</td>
+                </tr>
+                <tr>
+                    <td>Mini Benefit</td>
+                    <td>$2,000,000</td>
+                    <td></td>
+                    <td>$600</td>
+                    <td>$1,521.5</td>
+                </tr>
+                <tr>
+                    <td>Plat 3</td>
+                    <td>$1,000,000</td>
+                    <td>$800</td>
+                    <td>$175</td>
+                    <td>$2,496.5</td>
+                </tr>
+                <tr>
+                    <td>Mini Benefit</td>
+                    <td>$6,000,000</td>
+                    <td></td>
+                    <td>$1,300</td>
+                    <td>$2,821.5</td>
+                </tr>
+                <tr>
+                    <td>Mini Benefit</td>
+                    <td>$9,000,000</td>
+                    <td></td>
+                    <td>$2,550</td>
+                    <td>$5,371.5</td>
+                </tr>
+                <tr>
+                    <td>Plat 4</td>
+                    <td>$2,500,000</td>
+                    <td>$1,600</td>
+                    <td>$325</td>
+                    <td>$5,411.5</td>
+                </tr>
+                <tr>
+                    <td>Mini Benefit</td>
+                    <td>$15,000,000</td>
+                    <td></td>
+                    <td>$3,975</td>
+                    <td>$9,346.5</td>
+                </tr>
+                <tr>
+                    <td>Plat 5</td>
+                    <td>$5,000,000</td>
+                    <td>$3,200</td>
+                    <td>$700</td>
+                    <td>$9,311.5</td>
+                </tr>
+                <tr>
+                    <td>Diamond 1</td>
+                    <td>$25,000,000</td>
+                    <td>$12,800</td>
+                    <td>$3,000</td>
+                    <td>$40,586.5</td>
+                </tr>
+                <tr>
+                    <td>Diamond 2</td>
+                    <td>$50,000,000</td>
+                    <td>$25,600</td>
+                    <td>$7,500</td>
+                    <td>$73,686.5</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 </body>
