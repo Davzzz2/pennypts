@@ -419,3 +419,21 @@ body {
 #stake-link {
     background-image: url('https://cdn.dribbble.com/userupload/15215544/file/still-2778c286e035a4d088fe2e7af4a18fef.png?resize=1400x1050');
 }
+
+
+.rank-content {
+    display: flex;
+    flex-direction: column;  /* Ensures the text is stacked vertically */
+    align-items: center;     /* Centers the text horizontally */
+    justify-content: center; /* Centers the text vertically */
+    text-align: center;      /* Ensures the text is centered */
+    width: 100%;             /* Ensures the content takes up the full width of the parent */
+    padding: 10px;           /* Adjust padding if needed */
+}
+
+.rank-content .username,
+.rank-content .wager,
+.rank-content .reward {
+    margin: 0;  /* Remove any extra margin to prevent spacing issues */
+    font-size: 1.1rem;  /* Adjust font size if necessary */
+}
