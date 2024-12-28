@@ -32,62 +32,6 @@
             animation: fadeIn 1.5s ease-out; /* Fade-in animation for the body */
         }
 
-        /* Navbar Styling */
-        .cyber-navbar {
-            background: rgba(0, 4, 40, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem; /* Reduced padding for a smaller navbar */
-            position: fixed;
-            top: 1rem;
-            left: 15%;
-            right: 15%;
-            z-index: 1000;
-            border-bottom: 1px solid var(--neon-blue);
-            box-shadow: 0 0 20px rgba(0, 247, 255, 0.2);
-            border-radius: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 2s ease-out; /* Fade-in animation for navbar */
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-
-        /* Use stake.webp as logo */
-        .nav-logo {
-            height: 45px; /* Keep the size from before */
-            filter: drop-shadow(0 0 10px var(--glow-blue));
-            animation: fadeIn 2s ease-out; /* Fade-in animation for logo */
-            position: relative;
-            left: -20px; /* Move the logo to the left */
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: var(--stake-white);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.3rem; /* Reduced font size */
-            transition: all 0.3s ease;
-            text-shadow: 0 0 5px var(--glow-blue);
-        }
-
-        .nav-link:hover {
-            color: var(--neon-blue);
-            text-shadow: 0 0 10px var(--glow-blue);
-        }
-
         /* Header Styling */
         h1 {
             margin-top: 120px; /* Adjust for navbar */
@@ -134,24 +78,52 @@
             box-shadow: 0 0 20px rgba(0, 247, 255, 0.2);
             padding: 10px;
             background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
         }
 
-        /* Smooth scrollbars */
-        .table-container::-webkit-scrollbar {
-            width: 8px;
+        .table-wrapper {
+            flex: 1; /* Ensure the table takes most of the width */
         }
 
-        .table-container::-webkit-scrollbar-thumb {
-            background-color: var(--neon-blue);
-            border-radius: 5px;
+        /* Information Message Styling */
+        .info-message {
+            display: none; /* Hide the information by default */
+            background-color: rgba(0, 0, 0, 0.7); /* Dark background */
+            color: white;
+            padding: 5px 5px;
+            font-size: 0.9em;
+            border-radius: 10px;
+            max-width: 400px;
+            text-align: center;
+            margin-top: 20px;
+            animation: fadeInText 0.5s ease-out; /* Fade-in effect */
+            position: absolute;
+            top: 150px; /* Position it below the header */
+            left: 39%; /* Position it to the right of the table */
+            z-index: 9999;
         }
 
-        .table-container::-webkit-scrollbar-track {
-            background-color: rgba(0, 0, 0, 0.2);
+        /* Button-like Information Icon */
+        .info-icon {
+            position: relative; /* Make it a reference for positioning the tooltip */
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--neon-blue); /* Blue color for the "i" icon */
+            font-size: 1.3em;
+            margin-left: 8px; /* Add space between TOTAL and icon */
+            border: none;
+            background-color: transparent;
+            font-size: 1.5em;
+            padding: 5px 10px;
+            transition: background-color 0.3s;
         }
 
-        /* Fade-in animation */
-        @keyframes fadeIn {
+        .info-icon:hover {
+            background-color: rgba(0, 0, 0, 0.2); /* Change background color on hover */
+        }
+
+        /* Fade-in animation for the information message */
+        @keyframes fadeInText {
             0% {
                 opacity: 0;
             }
@@ -160,57 +132,153 @@
             }
         }
 
-.social-links {
-    position: fixed; /* Fix position to the right side */
-    right: 10px; /* Position from the right side */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Adjust for exact vertical centering */
-    display: flex;
-    flex-direction: column; /* Stack buttons vertically */
-    gap: 1rem; /* Space between icons */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Ensure they are above other content */
-}
+        /* Styling for the navbar */
+        .cyber-navbar {
+            background: rgba(0, 4, 40, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem; /* Reduced padding for a smaller navbar */
+            position: fixed;
+            top: 1rem;
+            left: 15%;
+            right: 15%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.2);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.social-link {
-    width: 60px; /* Increased size */
-    height: 60px; /* Increased size */
-    background-size: cover;
-    background-position: center;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: inline-block; /* Ensure it's a block element */
-    border: 2px solid var(--neon-blue); /* Optional border */
-}
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
 
-.social-link:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 1);
-}
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+            align-items: center;
+        }
 
-#kick-link {
-    background-image: url('https://i.pinimg.com/736x/f6/4f/56/f64f5611aabc03a17fa0a1ddfc7d0490.jpg');
-}
+        .nav-link {
+            color: var(--stake-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.3rem; /* Reduced font size */
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px var(--glow-blue);
+        }
 
-#yt-link {
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png');
-}
+        .nav-link:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--glow-blue);
+        }
 
-#twitter-link {
-    background-image: url('https://img.freepik.com/vektoren-kostenlos/neues-twitter-logo-x-icon-design-2023_1017-45418.jpg?t=st=1734191515~exp=1734195115~hmac=5bfeabf55a31a7cf0771ea83cf61905033b74c0d7a8bbb127ed07a70b35e74bc&w=826');
-}
+        .nav-logo {
+            height: 45px; /* Keep the size from before */
+            filter: drop-shadow(0 0 10px var(--glow-blue));
+            animation: fadeIn 2s ease-out; /* Fade-in animation for logo */
+            position: relative;
+            left: -20px; /* Move the logo to the left */
+        }
 
-#stake-link {
-    background-image: url('https://cdn.dribbble.com/userupload/15215544/file/still-2778c286e035a4d088fe2e7af4a18fef.png?resize=1400x1050');
-}
-	#discord-link {
-    background-image: url('https://banner2.cleanpng.com/20180628/ii/aayi53218.webp');
-    background-size: cover;
-    background-position: center;
-}
+        /* Social Media Buttons */
+        .social-buttons {
+            margin-top: 40px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
 
+        .social-button {
+            background-color: #333;
+            border-radius: 50%;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-button i {
+            color: white;
+            font-size: 1.5em;
+        }
+
+        .social-button:hover {
+            background-color: var(--neon-blue);
+        }
+
+        .social-links {
+            position: fixed; /* Fix position to the right side */
+            right: 10px; /* Position from the right side */
+            top: 50%; /* Center vertically */
+            transform: translateY(-50%); /* Adjust for exact vertical centering */
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            gap: 1rem; /* Space between icons */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Ensure they are above other content */
+        }
+
+        .social-link {
+            width: 60px; /* Increased size */
+            height: 60px; /* Increased size */
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block; /* Ensure it's a block element */
+            border: 2px solid var(--neon-blue); /* Optional border */
+        }
+
+        .social-link:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 1);
+        }
+
+        #kick-link {
+            background-image: url('https://i.pinimg.com/736x/f6/4f/56/f64f5611aabc03a17fa0a1ddfc7d0490.jpg');
+        }
+
+        #yt-link {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png');
+        }
+
+        #twitter-link {
+            background-image: url('https://img.freepik.com/vektoren-kostenlos/neues-twitter-logo-x-icon-design-2023_1017-45418.jpg?t=st=1734191515~exp=1734195115~hmac=5bfeabf55a31a7cf0771ea83cf61905033b74c0d7a8bbb127ed07a70b35e74bc&w=826');
+        }
+
+        #stake-link {
+            background-image: url('https://cdn.dribbble.com/userupload/15215544/file/still-2778c286e035a4d088fe2e7af4a18fef.png?resize=1400x1050');
+        }
+        #discord-link {
+            background-image: url('https://banner2.cleanpng.com/20180628/ii/aayi53218.webp');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 12px; /* Set the width of the scrollbar */
+            background-color: #000000; /* Black background */
+            border-radius: 10px; /* Rounded edges */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--neon-blue); /* Blue scrollbar thumb */
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: var(--light-blue); /* Change color on hover */
+        }
     </style>
 </head>
 <body>
@@ -218,7 +286,7 @@
     <!-- Navbar Section -->
     <nav class="cyber-navbar">
         <div class="nav-container">
-	  <img src="stake.webp" alt="Stake" class="nav-logo">
+            <img src="stake.webp" alt="Stake" class="nav-logo">
             <div class="nav-links">
                 <a href="../home.html" class="nav-link">HOME</a>
                 <a href="../leaderboard/index.html" class="nav-link">LEADERBOARD</a>
@@ -227,30 +295,26 @@
         </div>
     </nav>
 
-    <!-- Social Media Links -->
-    <div class="social-links">
-        <a id="kick-link" class="social-link" href="https://kick.com/enjayy/" target="_blank"></a>
-        <a id="yt-link" class="social-link" href="https://youtube.com/channel/UCzioTLxeMrkSkRAOxyXoTcw" target="_blank"></a>
-        <a id="twitter-link" class="social-link" href="https://twitter.com/imEnjayy" target="_blank"></a>
-        <a id="stake-link" class="social-link" href="http://stake.com/?c=penny" target="_blank"></a>
-	 <a id="discord-link" class="social-link" href="https://discord.gg/fns2f3cdnS" target="_blank"></a>
-    </div>
-
     <h1>Rank Up and Mini Benefits</h1>
 
-    <!-- Scrollable Table -->
+    <!-- Scrollable Table and Info Section -->
     <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>RANK</th>
-                    <th>WAGER</th>
-                    <th>Reward from Support</th>
-                    <th>Reward from Enjayy</th>
-                    <th>TOTAL</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>RANK</th>
+                        <th>WAGER</th>
+                        <th>Reward from Support</th>
+                        <th>Reward from Enjayy</th>
+                        <th>
+                            TOTAL
+                            <!-- Information Icon (Now a button) -->
+                            <button class="info-icon" onclick="toggleInfoMessage()">i</button>
+                        </th>
+                    </tr>
+                </thead>
+<tbody>
                 <tr>
                     <td>Mini Benefit</td>
                     <td>$5,000</td>
@@ -420,8 +484,29 @@
                     <td>$22,521.5</td>
                 </tr>
             </tbody>
-        </table>
+            </table>
+        </div>
     </div>
 
+    <!-- Information Message -->
+    <div class="info-message">
+        <p><strong>Total only counts the amount of the rewards from Enjayy, not from Support.</p>
+    </div>
+
+    <div class="social-links">
+        <a href="https://www.kick.com" target="_blank" class="social-link" id="kick-link"></a>
+        <a href="https://www.youtube.com/@StakePro" target="_blank" class="social-link" id="yt-link"></a>
+        <a href="https://twitter.com/stakepro" target="_blank" class="social-link" id="twitter-link"></a>
+        <a href="https://www.stake.com" target="_blank" class="social-link" id="stake-link"></a>
+        <a href="https://discord.com/invite/nd4jq4N" target="_blank" class="social-link" id="discord-link"></a>
+    </div>
+
+    <script>
+        // Function to toggle the visibility of the information message
+        function toggleInfoMessage() {
+            var message = document.querySelector('.info-message');
+            message.style.display = message.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
 </body>
 </html>
