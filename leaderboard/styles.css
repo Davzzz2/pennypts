@@ -22,7 +22,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Animations */
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -65,12 +64,10 @@ body {
     }
 }
 
-/* Fade-in Effect */
 .fade-in {
     animation: fadeIn 1s ease-in-out;
 }
 
-/* Navbar */
 .cyber-navbar {
     background: rgba(0, 4, 40, 0.8);
     backdrop-filter: blur(10px);
@@ -101,14 +98,13 @@ body {
     text-shadow: 0 0 5px var(--glow-blue);
 }
 
-/* Navbar Links Styling */
 .nav-link {
     color: var(--stake-white);
     text-decoration: none;
     font-weight: 700;
     text-shadow: 0 0 5px var(--glow-blue);
     transition: all 0.3s ease;
-    font-size: 1.5rem; /* Increased font size */
+    font-size: 1.5rem;
 }
 
 .nav-link:hover {
@@ -116,8 +112,6 @@ body {
     text-shadow: 0 0 10px var(--glow-blue);
 }
 
-
-/* Main Container */
 .cyber-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -145,21 +139,21 @@ body {
     animation: titleGlow 2s infinite alternate;
 }
 
-/* Center Rank Boxes */
 .top-ranks {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Align vertically */
+    justify-content: center;
+    align-items: center;
     gap: 2rem;
     margin-top: 2rem;
 }
+
 .rank-card {
     background: rgba(0, 4, 40, 0.8);
     padding: 2.5rem;
     border-radius: 15px;
     position: relative;
     transition: all 0.3s ease;
-    width: 250px; /* Smaller width */
+    width: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -187,29 +181,26 @@ body {
     opacity: 0.2;
 }
 
-/* Rank Card Adjustments */
 .rank-1 {
     transform: scale(1.1);
     z-index: 3;
-    margin-top: -4rem; /* Significantly higher to stand out */
-    margin-bottom: 10em; /* Creates space below */
+    margin-top: -4rem;
+    margin-bottom: 10em;
 }
 
 .rank-2 {
     transform: scale(1.1);
     z-index: 2;
-    margin-top: 4rem; /* Space between Rank 1 and Rank 2 */
-    margin-bottom: 2rem; /* Space below Rank 2 */
+    margin-top: 4rem;
+    margin-bottom: 2rem;
 }
 
 .rank-3 {
     transform: scale(1.1);
     z-index: 1;
-    margin-top: 4rem; /* Larger space between Rank 2 and Rank 3 */
-    margin-bottom: 2rem; /* Slight space below Rank 3 */
+    margin-top: 4rem;
+    margin-bottom: 2rem;
 }
-
-
 
 .rank-card:hover {
     transform: translateY(-10px) scale(1.05);
@@ -235,17 +226,12 @@ body {
     animation: float 2s ease-in-out infinite;
 }
 
-/* Rank Logo Styling */
-        .rank-logo {
-	height: 40px;
-        filter: drop-shadow(0 0 10px var(--glow-blue));
-	margin-bottom: 1rem;
-
-
+.rank-logo {
+    height: 40px;
+    filter: drop-shadow(0 0 10px var(--glow-blue));
+    margin-bottom: 1rem;
 }
 
-
-/* Reward Amount Glow */
 .reward-amount {
     font-size: 1.5rem;
     font-weight: bold;
@@ -266,7 +252,6 @@ body {
     animation: float 2s ease-in-out infinite;
 }
 
-/* Warning Text */
 .warning {
     font-size: 1.2rem;
     font-weight: bold;
@@ -275,14 +260,13 @@ body {
     margin-top: 3rem;
     text-shadow: 0 0 10px var(--glow-blue), 0 0 20px var(--glow-blue);
     animation: glow 1.5s infinite alternate;
-    border: 2px solid var(--neon-blue); /* Added border */
+    border: 2px solid var(--neon-blue);
     padding: 1rem;
-    border-radius: 12px; /* Rounded edges */
-    background: rgba(0, 4, 40, 0.8); /* Semi-transparent background */
+    border-radius: 12px;
+    background: rgba(0, 4, 40, 0.8);
     box-shadow: 0 0 20px rgba(0, 247, 255, 0.2);
 }
 
-/* Table */
 .cyber-table-container {
     background: rgba(0, 4, 40, 0.8);
     border-radius: 15px;
@@ -318,7 +302,6 @@ body {
     background: rgba(0, 247, 255, 0.1);
 }
 
-/* Social Links */
 .cyber-social {
     position: fixed;
     right: 2rem;
@@ -331,20 +314,20 @@ body {
 
 .countdown {
     position: fixed;
-    top: -11rem; /* Reduce top position */
-    right: -80rem; /* Adjust right position */
-    padding: 0.6rem 1.2rem; /* Reduce padding to make it smaller vertically */
+    top: -11rem;
+    right: -80rem;
+    padding: 0.6rem 1.2rem;
     background-color: rgba(0, 4, 40, 0.8);
     border-radius: 15px;
     color: var(--stake-white);
-    font-size: 0.9rem; /* Lower font size */
+    font-size: 0.9rem;
     font-weight: bold;
     text-align: center;
     box-shadow: 0 0 10px var(--neon-blue);
     filter: drop-shadow(0 0 10px var(--glow-blue));
     max-width: 220px;
     word-wrap: break-word;
-    line-height: 1.2; /* Adjust line-height to be slightly tighter */
+    line-height: 1.2;
     white-space: normal;
     cursor: pointer;
     position: relative;
@@ -353,14 +336,14 @@ body {
 .countdown::after {
     content: "Updated twice a day";
     position: absolute;
-    bottom: -25px; /* Adjust bottom position */
+    bottom: -25px;
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(0, 4, 40, 0.9);
     color: var(--stake-white);
-    padding: 0.4rem 0.8rem; /* Reduce padding */
+    padding: 0.4rem 0.8rem;
     border-radius: 8px;
-    font-size: 0.9rem; /* Lower font size for the after content */
+    font-size: 0.9rem;
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -373,30 +356,27 @@ body {
     opacity: 1;
 }
 
-
-/* Countdown content styling (Ensuring it is split into two parts) */
 .countdown span {
-    display: block;  /* Forces the countdown to be on separate lines */
-    font-size: 1.2rem; /* Larger font for countdown */
-    margin-top: 0.5rem; /* Adds spacing between countdown parts */
+    display: block;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
 }
 
-/* Optional: If you want the text (e.g., "Leaderboard starts now") to be smaller */
 .countdown .label {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
 }
 
 .social-link {
-    width: 60px; /* Increased size */
-    height: 60px; /* Increased size */
+    width: 60px;
+    height: 60px;
     background-size: cover;
     background-position: center;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: inline-block; /* Ensure it's a block element */
-    border: 2px solid var(--neon-blue); /* Optional border */
+    display: inline-block;
+    border: 2px solid var(--neon-blue);
 }
 
 .social-link:hover {
@@ -419,7 +399,8 @@ body {
 #stake-link {
     background-image: url('https://cdn.dribbble.com/userupload/15215544/file/still-2778c286e035a4d088fe2e7af4a18fef.png?resize=1400x1050');
 }
-	#discord-link {
+
+#discord-link {
     background-image: url('https://banner2.cleanpng.com/20180628/ii/aayi53218.webp');
     background-size: cover;
     background-position: center;
@@ -427,17 +408,17 @@ body {
 
 .rank-content {
     display: flex;
-    flex-direction: column;  /* Ensures the text is stacked vertically */
-    align-items: center;     /* Centers the text horizontally */
-    justify-content: center; /* Centers the text vertically */
-    text-align: center;      /* Ensures the text is centered */
-    width: 100%;             /* Ensures the content takes up the full width of the parent */
-    padding: 10px;           /* Adjust padding if needed */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
 }
 
 .rank-content .username,
 .rank-content .wager,
 .rank-content .reward {
-    margin: 0;  /* Remove any extra margin to prevent spacing issues */
-    font-size: 1.1rem;  /* Adjust font size if necessary */
+    margin: 0;
+    font-size: 1.1rem;
 }
