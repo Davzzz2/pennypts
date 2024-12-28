@@ -28,12 +28,12 @@
             text-align: center;
             position: relative;
             overflow-x: hidden;
-            opacity: 0; /* Start hidden */
-            transition: opacity 1s ease-in-out; /* Smooth fade-in transition */
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
 
         body.fade-in {
-            opacity: 1; /* When the fade-in class is added, opacity is set to 1 */
+            opacity: 1;
         }
 
         h1 {
@@ -48,7 +48,6 @@
             margin-bottom: 30px;
         }
 
-        /* Navbar */
         .cyber-navbar {
             background: rgba(0, 4, 40, 0.8);
             backdrop-filter: blur(10px);
@@ -100,10 +99,8 @@
             text-shadow: 0 0 10px var(--glow-blue);
         }
 
-
         .rect-box {
             width: 400px;
-            height: 400px;
             background-color: rgba(255, 255, 255, 0.2);
             border-radius: 15px;
             border: 4px solid #fff;
@@ -114,34 +111,52 @@
             text-align: center;
             margin: 0 auto;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-            padding: 10px;
+            padding: 20px;
         }
 
         .rect-box p {
             margin: 5px 0;
-            font-size: 1.2rem;
+            font-size: 1.7rem;
         }
 
-        /* Style for the Stake button */
+        .bold {
+            font-weight: bold;
+        }
+
+        .large-text {
+            font-size: 20rem;
+	    font-size: 2rem;
+        }
+
+        .highlight {
+            font-size: 20rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 0 0 8px var(--neon-blue);
+        }
+
         .stake-button {
             width: 220px;
             height: 50px;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: transparent;
+            background: linear-gradient(135deg, var(--cyber-blue), var(--dark-blue));
             border-radius: 10px;
             overflow: hidden;
+            text-decoration: none;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
 
-        .stake-button img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
+        .stake-button-text {
+            color: var(--stake-white);
+            padding: 10px 20px;
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 1.5rem;
         }
 
         .stake-button:hover {
@@ -182,18 +197,16 @@
             background-image: url('https://img.freepik.com/vektoren-kostenlos/neues-twitter-logo-x-icon-design-2023_1017-45418.jpg');
         }
 
-.nav-logo {
-    position: absolute;
-    left: 30%; /* Adjust this percentage to move the logo horizontally */
-    height: 55px;
-    filter: drop-shadow(0 0 10px var(--glow-blue));
-}
-
+        .nav-logo {
+            position: absolute;
+            left: 30%;
+            height: 55px;
+            filter: drop-shadow(0 0 10px var(--glow-blue));
+        }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
     <div class="cyber-navbar">
         <div class="nav-container">
             <a href="#" class="nav-logo">
@@ -202,28 +215,25 @@
             <div class="nav-links">
                 <a href="leaderboard/index.html" class="nav-link">Leaderboard</a>
                 <a href="benefits/benefits.html" class="nav-link">Benefits</a>
-                <a href="https://gambleassist.pro" class="nav-link" target="_blank">GambleAssist</a>
+                <a href="https://gambleassist.pro" class="nav-link">GambleAssist</a>
             </div>
         </div>
     </div>
 
-    <!-- Main Content -->
     <p><strong>Explore the wager leaderboard & extra benefits below</strong></p>
 
     <div class="signup-section">
         <p>Sign up under code <strong>PENNY</strong></p>
         <div class="rect-box">
-            <p>$7 Reload</p>
-            <p>$1 / day for 7 days</p>
-            <p>7 days for $7 total</p>
-            <p>New users only</p>
-            <p>5% rakeback</p>
-            <p>Weekly Leaderboard</p>
-            <p>Rank-up benefits</p>
-            <p>Mini rank-up benefits</p>
-            <p class="large-text">PennyPoints (Coming Soon)</p>
+            <img src="stake.webp" alt="Stake Logo" style="width: 100px; margin-bottom: 20px;">
+            <p class="highlight">$7</p>
+            <p class="highlight">Welcome Bonus</p>
+            <p>New Users Only</p>
+            <p>5% Rakeback On all Bets</p>
+            <p>Rank Up Benefits</p>
+            <p>Mini-Rank Up Benefits</p>
             <a href="http://stake.com/?c=penny" class="stake-button">
-                <img src="https://cdn.dribbble.com/userupload/15215544/file/still-2778c286e035a4d088fe2e7af4a18fef.png?resize=1400x1050" alt="Stake Logo">
+                <span class="stake-button-text">SIGN UP</span>
             </a>
         </div>
     </div>
@@ -235,9 +245,8 @@
     </div>
 
     <script>
-        // Add a fade-in effect when the page loads
         window.addEventListener('load', function () {
-            document.body.classList.add('fade-in'); // Adding the fade-in class after the page loads
+            document.body.classList.add('fade-in');
         });
     </script>
 </body>
