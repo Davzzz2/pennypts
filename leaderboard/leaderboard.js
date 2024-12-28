@@ -6,35 +6,42 @@ const prizesOver75k = { 1: 30, 2: 27.5, 3: 18, 4: 10, 5: 5, 6: 1, 7: 1, 8: 1, 9:
 let lastWeekStartDate = null;
 let nextLeaderboardStartDate = null;
 
-// Function to calculate the next leaderboard start date (7 days from the current one)
-function calculateNextLeaderboardDate(startDate) {
-    const start = new Date(startDate);
-    const nextStart = new Date(start);
-    nextStart.setDate(start.getDate() + 7);  // Adding 7 days
-    return nextStart;
-}
+// 🎯 Countdown Target Date: 28th December, 11:59 PM
+const leaderboardEndDate = new Date('2024-12-28T23:59:00');
 
-// Function to update the countdown timer
-function updateCountdown(targetDate) {
+// 🕒 Update Countdown Timer
+function updateCountdown() {
     const countdownElement = document.getElementById('countdown');
-    if (countdownElement) {
-        const now = new Date();
-        const timeLeft = targetDate - now;
+    if (!countdownElement) return;
 
-        if (timeLeft <= 0) {
-            countdownElement.textContent = "Leaderboard starts now!";
-            clearInterval(countdownInterval);
-        } else {
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            
-            countdownElement.textContent = `Next leaderboard in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-        }
+    const now = new Date();
+    const timeLeft = leaderboardEndDate - now;
+
+    if (timeLeft <= 0) {
+        // If the event has ended
+        countdownElement.innerHTML = `
+            <span class="label">Leaderboard has ended</span>
+        `;
+        clearInterval(countdownInterval);
+    } else if (timeLeft > 0) {
+        // If the event is still coming up, show countdown
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        countdownElement.innerHTML = `
+            <span class="label">Leaderboard starts in:</span>
+            <span>${days}d ${hours}h ${minutes}m ${seconds}s</span>
+        `;
     }
 }
 
+// Start countdown immediately
+updateCountdown();
+const countdownInterval = setInterval(updateCountdown, 1000);
+
+// 📊 Fetch CSV Data
 async function fetchCSVData(url) {
     try {
         const response = await fetch(url);
@@ -46,6 +53,7 @@ async function fetchCSVData(url) {
     }
 }
 
+// 📝 Parse CSV Data
 function parseCSV(data) {
     return data.split('\n')
         .slice(1)
@@ -64,11 +72,13 @@ function parseCSV(data) {
         .filter(row => row.user_name && row.wagered && row.rank);
 }
 
+// 🎁 Get Prize Based on Rank and Wagered Amount
 function getPrize(wagered, rank) {
     const prizeData = wagered >= 75000 ? prizesOver75k : prizesUnder75k;
     return prizeData[rank] || 0;
 }
 
+// 🔄 Update DOM Elements
 function updateElement(elementId, value, animate = true) {
     const element = document.getElementById(elementId);
     if (element) {
@@ -81,6 +91,7 @@ function updateElement(elementId, value, animate = true) {
     }
 }
 
+// 🥇 Populate Top 3 Ranks
 function populateTopRanks(data) {
     const topRanks = data.slice(0, 3);
     topRanks.forEach((row, index) => {
@@ -91,6 +102,7 @@ function populateTopRanks(data) {
     });
 }
 
+// 📊 Populate Leaderboard Table
 function populateLeaderboard(data) {
     const leaderboardBody = document.getElementById('leaderboard-body');
     leaderboardBody.innerHTML = '';
@@ -115,6 +127,15 @@ function populateLeaderboard(data) {
     updateElement('total-wager', `$${totalWagerAmount.toFixed(2)}`);
 }
 
+// 📅 Calculate Next Leaderboard Date
+function calculateNextLeaderboardDate(startDate) {
+    const start = new Date(startDate);
+    const nextStart = new Date(start);
+    nextStart.setDate(start.getDate() + 7);
+    return nextStart;
+}
+
+// 🗓️ Determine If New Week
 function isNewWeek() {
     const currentWeekStart = getWeekStartDate(new Date());
     if (!lastWeekStartDate || lastWeekStartDate !== currentWeekStart) {
@@ -124,6 +145,7 @@ function isNewWeek() {
     return false;
 }
 
+// 🗓️ Get Start of the Week
 function getWeekStartDate(date) {
     const startOfWeek = new Date(date);
     const dayOfWeek = startOfWeek.getDay();
@@ -133,6 +155,7 @@ function getWeekStartDate(date) {
     return startOfWeek.toISOString().split('T')[0];
 }
 
+// 🚀 Update Leaderboard
 async function updateLeaderboard() {
     try {
         const data = await fetchCSVData(CSV_URL);
@@ -141,7 +164,7 @@ async function updateLeaderboard() {
         if (validData.length > 0) {
             const startDate = validData[0].start_date_utc;
             nextLeaderboardStartDate = calculateNextLeaderboardDate(startDate);
-            updateCountdown(nextLeaderboardStartDate);
+            updateCountdown();
         }
 
         if (isNewWeek()) {
@@ -153,30 +176,16 @@ async function updateLeaderboard() {
     }
 }
 
-// Update the countdown every second
-const countdownInterval = setInterval(() => {
-    if (nextLeaderboardStartDate) {
-        updateCountdown(nextLeaderboardStartDate);
-    }
-}, 1000);
-
-// Initial leaderboard update
-updateLeaderboard();
-
+// 🕒 Auto-update leaderboard every 12 hours
 setInterval(updateLeaderboard, 12 * 60 * 60 * 1000);
 
+// 🌟 Hover Animation for Rank Cards
 document.addEventListener('DOMContentLoaded', () => {
-    const rankCards = document.querySelectorAll('.rank-card');
-    rankCards.forEach(card => {
-        card.addEventListener('mouseover', () => {
-            card.style.transform = 'scale(1.05) translateY(-5px)';
-            card.style.boxShadow = `0 0 20px ${getComputedStyle(document.documentElement)
-                .getPropertyValue('--neon-blue')}`;
-        });
-
-        card.addEventListener('mouseout', () => {
-            card.style.transform = '';
-            card.style.boxShadow = '';
-        });
+    document.querySelectorAll('.rank-card').forEach(card => {
+        card.addEventListener('mouseover', () => card.style.transform = 'scale(1.05) translateY(-5px)');
+        card.addEventListener('mouseout', () => card.style.transform = '');
     });
 });
+
+// Initial Load
+updateLeaderboard();
