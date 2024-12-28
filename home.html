@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pennypts</title>
     <link rel="icon" href="pennypts.ico" type="image/x-icon">
+    
     <style>
         :root {
             --cyber-blue: #000428;
@@ -104,7 +105,7 @@
             width: 400px;
             background-color: rgba(255, 255, 255, 0.2);
             border-radius: 15px;
-            border: 4px solid #fff;
+            border: 4px solid var(--neon-blue);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -117,7 +118,7 @@
 
         .rect-box p {
             margin: 5px 0;
-            font-size: 1.7rem;
+            font-size: 1.2rem;
         }
 
         .bold {
@@ -125,15 +126,15 @@
         }
 
         .large-text {
-            font-size: 20rem;
-	    font-size: 2rem;
+            font-size: 2rem;
         }
 
+        /* Ensure this class is applied directly for the larger text */
         .highlight {
-            font-size: 20rem;
+            font-size: 3rem !important; /* Much larger font size for emphasis */
             font-weight: bold;
             margin-bottom: 20px;
-            text-shadow: 0 0 8px var(--neon-blue);
+            text-shadow: 0 0 40px var(--neon-blue) !important; /* Very strong glow for emphasis */
         }
 
         .stake-button {
@@ -220,14 +221,14 @@
         </div>
     </div>
 
-    <p><strong>Explore the wager leaderboard & extra benefits below</strong></p>
+    <p><strong>Explore the wager leaderboard & extra benefits above</strong></p> <!-- Moved text above -->
 
     <div class="signup-section">
         <p>Sign up under code <strong>PENNY</strong></p>
         <div class="rect-box">
             <img src="stake.webp" alt="Stake Logo" style="width: 100px; margin-bottom: 20px;">
-            <p class="highlight">$7</p>
-            <p class="highlight">Welcome Bonus</p>
+            <p class="highlight">$7</p> <!-- Increased font size for $7 -->
+            <p class="highlight">Welcome Bonus</p> <!-- Increased font size for Welcome Bonus -->
             <p>New Users Only</p>
             <p>5% Rakeback On all Bets</p>
             <p>Rank Up Benefits</p>
