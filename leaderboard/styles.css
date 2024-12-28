@@ -419,7 +419,11 @@ body {
 #stake-link {
     background-image: url('https://cdn.dribbble.com/userupload/15215544/file/still-2778c286e035a4d088fe2e7af4a18fef.png?resize=1400x1050');
 }
-
+	#discord-link {
+    background-image: url('https://banner2.cleanpng.com/20180628/ii/aayi53218.webp');
+    background-size: cover;
+    background-position: center;
+}
 
 .rank-content {
     display: flex;
