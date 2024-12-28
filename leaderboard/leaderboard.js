@@ -3,49 +3,58 @@ const CSV_URL = 'https://app.trevor.io/share/view/dad4e1e7-7df4-41f5-9ff8-c888fc
 const prizesUnder75k = { 1: 25, 2: 20, 3: 15, 4: 10, 5: 5, 6: 1, 7: 1, 8: 1, 9: 1, 10: 1 };
 const prizesOver75k = { 1: 30, 2: 27.5, 3: 18, 4: 10, 5: 5, 6: 1, 7: 1, 8: 1, 9: 1, 10: 1 };
 
-let lastWeekStartDate = null;
-let nextLeaderboardStartDate = null;
+let leaderboardStartDate = new Date('2024-12-29T00:00:00Z'); // Fixed start date (Dec 29, 2024)
+let leaderboardEndDate = new Date(leaderboardStartDate);
+leaderboardEndDate.setDate(leaderboardStartDate.getDate() + 7); // Add 7 days to the start date
 
-// 🎯 Countdown Target Date: 28th December, 11:59 PM
-const leaderboardEndDate = new Date('2024-12-28T23:59:00');
-
-// 🕒 Update Countdown Timer
+// 🎯 Update Countdown Timer
 function updateCountdown() {
     const countdownElement = document.getElementById('countdown');
-    if (!countdownElement) return;
+    if (!countdownElement || !leaderboardEndDate) return;
 
     const now = new Date();
     const timeLeft = leaderboardEndDate - now;
 
+    console.log('Current Time:', now);
+    console.log('Leaderboard End Date:', leaderboardEndDate);
+    console.log('Time Left:', timeLeft);
+
     if (timeLeft <= 0) {
-        // If the event has ended
+        // If the event has ended, update start and end date to the next leaderboard period
+        leaderboardStartDate.setDate(leaderboardStartDate.getDate() + 7);
+        leaderboardEndDate.setDate(leaderboardEndDate.getDate() + 7); // Update both start and end date for next leaderboard
+        updateLeaderboard(); // Refresh leaderboard for the new period
         countdownElement.innerHTML = `
-            <span class="label">Leaderboard has ended</span>
+            <span class="label">Leaderboard has ended. New period starts in:</span>
         `;
-        clearInterval(countdownInterval);
-    } else if (timeLeft > 0) {
-        // If the event is still coming up, show countdown
+        updateCountdown(); // Update countdown to the next period
+    } else {
+        // If the event is still ongoing, show countdown
         const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
         const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
         countdownElement.innerHTML = `
-            <span class="label">Leaderboard starts in:</span>
+            <span class="label">Leaderboard ends in:</span>
             <span>${days}d ${hours}h ${minutes}m ${seconds}s</span>
         `;
     }
 }
 
-// Start countdown immediately
-updateCountdown();
-const countdownInterval = setInterval(updateCountdown, 1000);
-
 // 📊 Fetch CSV Data
 async function fetchCSVData(url) {
     try {
+        console.log('Fetching CSV data from URL...');
         const response = await fetch(url);
+        
+        if (!response.ok) {
+            console.error('Failed to fetch CSV data:', response.status, response.statusText);
+            return [];
+        }
+
         const data = await response.text();
+        console.log('CSV Data fetched:', data); // Debug log to verify data fetch
         return parseCSV(data);
     } catch (error) {
         console.error('Error fetching CSV data:', error);
@@ -55,54 +64,68 @@ async function fetchCSVData(url) {
 
 // 📝 Parse CSV Data
 function parseCSV(data) {
-    return data.split('\n')
-        .slice(1)
-        .map(row => {
-            const [affiliate_name, campaign_code, user_name, wagered, rank, start_date_utc, end_date_utc] = row.split(',');
-            return {
-                affiliate_name,
-                campaign_code,
-                user_name,
-                wagered: parseFloat(wagered) || 0,
-                rank: parseInt(rank) || 0,
-                start_date_utc,
-                end_date_utc
-            };
-        })
-        .filter(row => row.user_name && row.wagered && row.rank);
-}
+    const rows = data.split('\n').slice(1); // Skip the first row (header)
+    console.log('CSV Rows:', rows); // Debug log to verify the CSV rows
 
-// 🎁 Get Prize Based on Rank and Wagered Amount
-function getPrize(wagered, rank) {
-    const prizeData = wagered >= 75000 ? prizesOver75k : prizesUnder75k;
-    return prizeData[rank] || 0;
-}
-
-// 🔄 Update DOM Elements
-function updateElement(elementId, value, animate = true) {
-    const element = document.getElementById(elementId);
-    if (element) {
-        if (animate) {
-            element.style.animation = 'none';
-            element.offsetHeight; 
-            element.style.animation = 'glitch 0.3s ease';
+    return rows.map(row => {
+        const [affiliate_name, campaign_code, user_name, wagered, rank, start_date_utc, end_date_utc] = row.split(',');
+        
+        // Only return rows with meaningful data (skip empty rows)
+        if (!affiliate_name || !user_name || !wagered || !rank || !start_date_utc) {
+            return null;
         }
-        element.textContent = value;
+
+        return {
+            affiliate_name,
+            campaign_code,
+            user_name,
+            wagered: parseFloat(wagered) || 0,
+            rank: parseInt(rank) || 0,
+            start_date_utc,
+            end_date_utc
+        };
+    }).filter(row => row !== null); // Filter out any null values
+}
+
+// 🚀 Update Leaderboard
+async function updateLeaderboard() {
+    try {
+        const data = await fetchCSVData(CSV_URL);
+        console.log('Parsed CSV Data:', data); // Debug log to verify parsed data
+
+        const validData = data.sort((a, b) => a.rank - b.rank);
+
+        if (validData.length > 0) {
+            populateTopRanks(validData);
+            populateLeaderboard(validData);
+        }
+
+    } catch (error) {
+        console.error('Error updating leaderboard:', error);
     }
 }
 
-// 🥇 Populate Top 3 Ranks
+// 🗓️ Populate Top Ranks with Gift Emoji
 function populateTopRanks(data) {
     const topRanks = data.slice(0, 3);
     topRanks.forEach((row, index) => {
         const rank = index + 1;
+        let reward = `$${getPrize(row.wagered, row.rank).toFixed(2)}`;
+
+        // Add the gift emoji to rank 1, 2, and 3
+        if (rank === 1 || rank === 2 || rank === 3) {
+            reward = `🎁${reward}`; // Gift emoji for top 3 ranks
+        }
+
         updateElement(`user-${rank}`, row.user_name);
         updateElement(`wagered-${rank}`, `$${row.wagered.toFixed(2)}`);
-        updateElement(`reward-${rank}`, `$${getPrize(row.wagered, row.rank).toFixed(2)}`);
+        updateElement(`reward-${rank}`, reward, false); // False to allow HTML in the reward
     });
 }
 
-// 📊 Populate Leaderboard Table
+
+
+// 🗓️ Populate Leaderboard Table
 function populateLeaderboard(data) {
     const leaderboardBody = document.getElementById('leaderboard-body');
     leaderboardBody.innerHTML = '';
@@ -127,65 +150,30 @@ function populateLeaderboard(data) {
     updateElement('total-wager', `$${totalWagerAmount.toFixed(2)}`);
 }
 
-// 📅 Calculate Next Leaderboard Date
-function calculateNextLeaderboardDate(startDate) {
-    const start = new Date(startDate);
-    const nextStart = new Date(start);
-    nextStart.setDate(start.getDate() + 7);
-    return nextStart;
+// 🎁 Get Prize Based on Rank and Wagered Amount
+function getPrize(wagered, rank) {
+    const prizeData = wagered >= 75000 ? prizesOver75k : prizesUnder75k;
+    return prizeData[rank] || 0;
 }
 
-// 🗓️ Determine If New Week
-function isNewWeek() {
-    const currentWeekStart = getWeekStartDate(new Date());
-    if (!lastWeekStartDate || lastWeekStartDate !== currentWeekStart) {
-        lastWeekStartDate = currentWeekStart;
-        return true;
-    }
-    return false;
-}
-
-// 🗓️ Get Start of the Week
-function getWeekStartDate(date) {
-    const startOfWeek = new Date(date);
-    const dayOfWeek = startOfWeek.getDay();
-    const diff = startOfWeek.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
-    startOfWeek.setDate(diff);
-    startOfWeek.setHours(0, 0, 0, 0);
-    return startOfWeek.toISOString().split('T')[0];
-}
-
-// 🚀 Update Leaderboard
-async function updateLeaderboard() {
-    try {
-        const data = await fetchCSVData(CSV_URL);
-        const validData = data.sort((a, b) => a.rank - b.rank);
-
-        if (validData.length > 0) {
-            const startDate = validData[0].start_date_utc;
-            nextLeaderboardStartDate = calculateNextLeaderboardDate(startDate);
-            updateCountdown();
+// 🔄 Update DOM Elements
+function updateElement(elementId, value, animate = true) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        if (animate) {
+            element.style.animation = 'none';
+            element.offsetHeight; // Trigger reflow
+            element.style.animation = 'glitch 0.3s ease';
         }
-
-        if (isNewWeek()) {
-            populateTopRanks(validData);
-            populateLeaderboard(validData);
-        }
-    } catch (error) {
-        console.error('Error updating leaderboard:', error);
+        element.textContent = value;
     }
 }
 
 // 🕒 Auto-update leaderboard every 12 hours
 setInterval(updateLeaderboard, 12 * 60 * 60 * 1000);
 
-// 🌟 Hover Animation for Rank Cards
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.rank-card').forEach(card => {
-        card.addEventListener('mouseover', () => card.style.transform = 'scale(1.05) translateY(-5px)');
-        card.addEventListener('mouseout', () => card.style.transform = '');
-    });
-});
-
 // Initial Load
 updateLeaderboard();
+
+// Start the countdown immediately
+const countdownInterval = setInterval(updateCountdown, 1000);
