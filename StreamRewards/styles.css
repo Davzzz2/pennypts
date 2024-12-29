@@ -1,0 +1,254 @@
+:root {
+    --cyber-blue: #000428;
+    --neon-blue: #00f7ff;
+    --dark-blue: #004e92;
+    --stake-white: #ffffff;
+    --glow-blue: rgba(0, 247, 255, 0.5);
+    --dim-glow: rgba(255, 255, 255, 0.2); /* Dim white glow */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--cyber-blue), var(--dark-blue));
+    color: var(--stake-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow-x: hidden;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+body.fade-in {
+    opacity: 1;
+}
+
+/* Apply white text color and dim white glow to all text except the navbar */
+h1, p, .stream-rewards, .nav-link, .reward-list p, .info-box h2, .info-tab {
+    color: var(--stake-white);
+    text-shadow: 0 0 5px var(--dim-glow), 0 0 10px var(--dim-glow); /* Dim white glow */
+}
+
+h1 {
+    font-size: 3.15rem;
+    font-weight: bold;
+    margin: 0 0 9px 0;
+    text-shadow: 0 0 9px rgba(255, 255, 255, 0.8);
+}
+
+p {
+    font-size: 1.35rem;
+    margin-bottom: 27px;
+}
+
+/* Stream Rewards Headline */
+.stream-rewards {
+    font-size: 2rem; /* Adjust size */
+    font-weight: bold;
+    color: var(--stake-white); /* White text */
+    text-shadow: 0 0 5px var(--dim-glow), 0 0 10px var(--dim-glow); /* Dim white glow */
+    margin-top: 40px; /* Move it down a little */
+    margin-bottom: 20px; /* Space below the headline */
+    text-align: center;
+}
+
+/* Navbar */
+.cyber-navbar {
+    background: rgba(0, 4, 40, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1.35rem 1.8rem;
+    position: fixed;
+    top: 1.35rem;
+    left: 15%;
+    right: 15%;
+    z-index: 1000;
+    border-bottom: 1px solid var(--neon-blue);
+    box-shadow: 0 0 18px rgba(0, 247, 255, 0.2);
+    border-radius: 13.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Navbar Link Styling */
+.nav-container {
+    display: flex;
+    gap: 1.8rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--stake-white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 4.5px var(--glow-blue);
+}
+
+.nav-link:hover {
+    color: var(--neon-blue);
+    text-shadow: 0 0 9px var(--glow-blue);
+    font-weight: 700;
+}
+
+/* Info Box */
+.info-box {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--neon-blue);
+    border-radius: 9px;
+    padding: 18px;
+    margin-top: 108px;
+    text-align: left;
+    box-shadow: 0 0 13.5px var(--glow-blue);
+}
+
+.info-box h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    text-shadow: 0 0 9px var(--neon-blue);
+}
+
+.reward-list p {
+    margin: 4.5px 0;
+    font-size: 0.9rem;
+    color: #d3d3d3;
+}
+
+.info-tab {
+    margin-top: 18px;
+    padding-top: 9px;
+    border-top: 1px solid var(--neon-blue);
+    font-size: 1.08rem;
+    text-align: center;
+}
+
+/* Table Container */
+.table-container {
+    width: 80%;
+    max-width: 900px;
+    margin-top: 18px;
+    margin-left: 67.5px;
+    overflow-y: auto;
+    max-height: 450px;
+    border-radius: 9px;
+    box-shadow: 0 0 18px rgba(0, 247, 255, 0.2);
+    padding: 9px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10.8px 18px;
+    text-align: center;
+    border: 1px solid var(--neon-blue);
+}
+
+th {
+    background-color: var(--dark-blue);
+}
+
+td {
+    background-color: rgba(0, 0, 0, 0.27);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10.8px;
+    background-color: #000000;
+    border-radius: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--neon-blue);
+    border-radius: 9px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--neon-blue);
+}
+
+/* Social Media Links */
+.social-links {
+    position: fixed;
+    right: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    z-index: 1000;
+}
+
+.social-link {
+    width: 54px;
+    height: 54px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    box-shadow: 0 0 9px rgba(255, 255, 255, 0.8);
+    border: 2px solid var(--neon-blue);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 13.5px rgba(255, 255, 255, 1);
+}
+
+/* Dim white glow */
+.stream-rewards, h1, p, .reward-list p, .info-box h2, .info-tab {
+    color: var(--stake-white);
+    text-shadow: 0 0 5px var(--dim-glow), 0 0 10px var(--dim-glow);
+}
+
+
+        #kick-link {
+            background-image: url('https://i.pinimg.com/736x/f6/4f/56/f64f5611aabc03a17fa0a1ddfc7d0490.jpg');
+        }
+
+        #yt-link {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png');
+        }
+
+        #twitter-link {
+            background-image: url('https://img.freepik.com/vektoren-kostenlos/neues-twitter-logo-x-icon-design-2023_1017-45418.jpg?t=st=1734191515~exp=1734195115~hmac=5bfeabf55a31a7cf0771ea83cf61905033b74c0d7a8bbb127ed07a70b35e74bc&w=826');
+        }
+
+        #stake-link {
+            background-image: url('https://cdn.dribbble.com/userupload/15215544/file/still-2778c286e035a4d088fe2e7af4a18fef.png?resize=1400x1050');
+        }
+        #discord-link {
+            background-image: url('https://banner2.cleanpng.com/20180628/ii/aayi53218.webp');
+            background-size: cover;
+            background-position: center;
+        }
+h3 {
+    font-size: 1.5rem; /* Make the font bigger */
+    font-weight: bold; /* Make it bold */
+    margin-top: -5px; /* Adjust top margin if needed */
+    color: var(--stake-white); /* White text */
+    text-shadow: 0 0 5px var(--dim-glow), 0 0 10px var(--dim-glow); /* Dim white glow */
+}
+
+#stream-rewards {
+    font-size: 2.5rem; /* Adjusted size */
+    font-weight: bold; /* Ensure it's bold */
+    color: var(--stake-white); /* White text */
+    text-shadow: 0 0 10px var(--neon-blue), 0 0 15px var(--neon-blue), 0 0 20px var(--neon-blue); /* Brighter glow */
+    margin-bottom: 20px; /* Space between the title and content */
+}
+
+
