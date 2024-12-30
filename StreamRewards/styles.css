@@ -4,7 +4,7 @@
     --dark-blue: #004e92;
     --stake-white: #ffffff;
     --glow-blue: rgba(0, 247, 255, 0.5);
-    --dim-glow: rgba(255, 255, 255, 0.2); /* Dim white glow */
+    --dim-glow: rgba(255, 255, 255, 0.2);
 }
 
 body {
@@ -29,10 +29,9 @@ body.fade-in {
     opacity: 1;
 }
 
-/* Apply white text color and dim white glow to all text except the navbar */
 h1, p, .stream-rewards, .nav-link, .reward-list p, .info-box h2, .info-tab {
     color: var(--stake-white);
-    text-shadow: 0 0 5px var(--dim-glow), 0 0 10px var(--dim-glow); /* Dim white glow */
+    text-shadow: 0 0 5px var(--dim-glow), 0 0 10px var(--dim-glow); 
 }
 
 h1 {
@@ -47,18 +46,16 @@ p {
     margin-bottom: 27px;
 }
 
-/* Stream Rewards Headline */
 .stream-rewards {
-    font-size: 2rem; /* Adjust size */
+    font-size: 2rem; 
     font-weight: bold;
-    color: var(--stake-white); /* White text */
-    text-shadow: 0 0 5px var(--dim-glow), 0 0 10px var(--dim-glow); /* Dim white glow */
-    margin-top: 40px; /* Move it down a little */
-    margin-bottom: 20px; /* Space below the headline */
+    color: var(--stake-white); 
+    text-shadow: 0 0 5px var(--dim-glow), 0 0 10px var(--dim-glow); 
+    margin-top: 40px; 
+    margin-bottom: 20px; 
     text-align: center;
 }
 
-/* Navbar */
 .cyber-navbar {
     background: rgba(0, 4, 40, 0.8);
     backdrop-filter: blur(10px);
@@ -76,7 +73,6 @@ p {
     align-items: center;
 }
 
-/* Navbar Link Styling */
 .nav-container {
     display: flex;
     gap: 1.8rem;
@@ -99,7 +95,6 @@ p {
     font-weight: 700;
 }
 
-/* Info Box */
 .info-box {
     background: rgba(255, 255, 255, 0.1);
     border: 2px solid var(--neon-blue);
@@ -130,7 +125,6 @@ p {
     text-align: center;
 }
 
-/* Table Container */
 .table-container {
     width: 80%;
     max-width: 900px;
@@ -144,7 +138,6 @@ p {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -164,7 +157,6 @@ td {
     background-color: rgba(0, 0, 0, 0.27);
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
     width: 10.8px;
     background-color: #000000;
@@ -180,7 +172,6 @@ td {
     background-color: var(--neon-blue);
 }
 
-/* Social Media Links */
 .social-links {
     position: fixed;
     right: 9px;
@@ -208,7 +199,6 @@ td {
     box-shadow: 0 0 13.5px rgba(255, 255, 255, 1);
 }
 
-/* Dim white glow */
 .stream-rewards, h1, p, .reward-list p, .info-box h2, .info-tab {
     color: var(--stake-white);
     text-shadow: 0 0 5px var(--dim-glow), 0 0 10px var(--dim-glow);
@@ -236,19 +226,19 @@ td {
             background-position: center;
         }
 h3 {
-    font-size: 1.5rem; /* Make the font bigger */
-    font-weight: bold; /* Make it bold */
-    margin-top: -5px; /* Adjust top margin if needed */
-    color: var(--stake-white); /* White text */
-    text-shadow: 0 0 5px var(--dim-glow), 0 0 10px var(--dim-glow); /* Dim white glow */
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: -5px;
+    color: var(--stake-white);
+    text-shadow: 0 0 5px var(--dim-glow), 0 0 10px var(--dim-glow);
 }
 
 #stream-rewards {
-    font-size: 2.5rem; /* Adjusted size */
-    font-weight: bold; /* Ensure it's bold */
-    color: var(--stake-white); /* White text */
-    text-shadow: 0 0 10px var(--neon-blue), 0 0 15px var(--neon-blue), 0 0 20px var(--neon-blue); /* Brighter glow */
-    margin-bottom: 20px; /* Space between the title and content */
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--stake-white);
+    text-shadow: 0 0 10px var(--neon-blue), 0 0 15px var(--neon-blue), 0 0 20px var(--neon-blue); 
+    margin-bottom: 20px;
 }
 
 
